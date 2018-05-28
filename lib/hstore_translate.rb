@@ -10,4 +10,6 @@ end
 
 require 'activerecord-postgres-hstore' unless HstoreTranslate::native_hstore?
 
-ActiveRecord::Base.extend(HstoreTranslate::Translates)
+ActiveSupport.on_load(:active_record) do
+  ActiveRecord::Base.extend(HstoreTranslate::Translates)
+end
